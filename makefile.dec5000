@@ -1,0 +1,46 @@
+##################################################################
+# Makefile for c programs 
+#
+# JLP
+# Version 05-01-93
+##################################################################
+smgolib=$(JLPLIB)/smgo
+mylib=$(JLPLIB)/jlp
+midir=$(JLPLIB)/midas
+JLIB=$(mylib)/jlpacc.a $(mylib)/jlputil.a $(mylib)/newplot0.a \
+    $(mylib)/jlp_splot.a $(mylib)/jlpacc.a
+#XLIB= -lXaw -lXmu -lXt -lX11
+XLIB=
+#F77LIB=$(F77DIR)/libF77.a $(F77DIR)/libI77.a $(F77DIR)/libU77.a 
+#F77LIB= -lc $(F77DIR)/libxlf.a
+F77LIB= -lfor -lutil -lots -li
+MIDLIB=$(midir)/stlib.a $(midir)/udiolib.a $(midir)/oslib.a
+ESOEXT=/midas/frozen/exec/esoext.exe
+#FOURN=fourn.o
+FOURN=fft_jlp.o poidev.o
+INC=-I. -I./midincl
+CCLAGS=-g -C -D$(JLPSYSTEM) 
+
+.SUFFIXES:
+.SUFFIXES: .o .c .exe $(SUFFIXES) 
+
+.c.o:
+	cc -c $(CCLAGS) -O0 $(INC) $*.c
+
+.o.exe:
+	cc -g -o $(EXEC)/$*.exe $*.o $(RISLIB)\
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+.c.exe:
+	cc -c $(CCLAGS) -O0 $(INC) $*.c
+	cc -g -o $(EXEC)/$*.exe $*.o $(RISLIB)\
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+all: absp1.exe
+
+absp1.exe : absp1.c risley.c cel_meca1.c
+
+absp1.o : absp1.c risley.c cel_meca1.c
+
+clear:
+	rm -f *.o

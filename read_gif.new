@@ -1,0 +1,160 @@
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+* Program rtiff to read GIF format (from Macintosh) 
+* JLP LK EA
+* Version 14-04-97
+-----------------------------------------------------------------------*/
+
+/*
+#define DEBUG
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <jlp_ftoc.h>
+
+main(argc,argv)
+int argc;
+char *argv[];
+{
+char in_name[61], out_name[61], comments[81];
+float *real_array;
+int   height, width, depth, datatype, cmaptype, cmaplength;
+int red, green, blue;
+int nx, ny, status, iformat;
+register int i;
+
+printf(" Program read_gif to read GIF image files\n");
+printf(" JLP/EA Version 14-04-97 \n");
+
+/* One, three or four parameters only are allowed to run the program: */
+/* Carefull: 7 parameters always, using JLP "runs" */
+if(argc == 2)
+  {
+  printf(" Fatal: Syntax error: argc=%d\n",argc);
+  exit(-1);
+  }
+
+/* Interactive input of parameters: */
+if (argc == 1)
+ { 
+  printf(" Syntax: rtiff in_file out_file\n\n"); 
+  printf(" Input file := ");scanf("%s",in_name);
+  printf(" Output file := ");scanf("%s",out_name);
+ }
+else
+ {
+  strcpy(in_name,argv[1]);
+  strcpy(out_name,argv[2]);
+ }
+
+JLP_BEGIN();
+JLP_INQUIFMT();
+
+
+#ifdef DEBUG
+printf(" OK, will read >%s< \n",in_name);
+#endif
+
+
+status = read_header_gif(in_name,&height,&width,&depth,
+                          &datatype,&cmaptype,&cmaplength);
+/*
+* RETURN: 0 if everything OK
+*         -1 if unable to open rasterfile
+*         -2 if unable to close rasterfile
+*         -3 if error encoutered while reading stream
+*         -4 if unexpected rasterfile format: bad magic number
+*         -5 if unexpected rasterfile format: no colormap found
+*/
+  switch (status)
+    {
+    case -1: 
+      printf("read_header_gif/unable to open rasterfile\n");
+      break;
+    case -2: 
+      printf("read_header_gif/unable to close rasterfile\n");
+      break;
+    case -3: 
+      printf("read_header_gif/error encoutered while reading stream\n");
+      break;
+    case -4: 
+      printf("read_header_gif/unexpected rasterfile format: bad magic number\n");
+      break;
+    case -5: 
+      printf("read_header_gif/unexpected rasterfile format: no colormap found\n");
+      break;
+    }
+printf("height=%d width=%d \n",height,width);
+
+/*
+* int c_read_raster_gif(image,height,width,cmaplength,red,green,blue,filename)
+* int i_read_raster_gif(image,height,width,cmaplength,red,green,blue,filename)
+* int f_read_raster_gif(image,height,width,cmaplength,red,green,blue,filename)
+* int gif_decode(fp,raster,height,width,top,left)
+*/
+real_array = (float *)malloc(height*width*sizeof(float));
+status = f_read_raster_gif(real_array,height,width,cmaplength,
+                           &red,&green,&blue,in_name);
+
+if(!status)
+  {
+
+#ifdef DEBUG
+for(i=0; i<100; i++) printf(" a[%d]: %f ",i,real_array[i]);
+#endif
+
+  printf(" Conversion of GIF image:  %s    to:    %s \n",in_name,out_name);
+  sscanf(comments," From  %s",in_name);
+  JLP_WRITEIMAG(real_array,&nx,&ny,&nx,out_name,comments);
+  }
+else
+  {
+/*
+* RETURN: 0 if everything OK
+*         -1 if unable to open rasterfile
+*         -2 if unable to close rasterfile
+*         -3 if error encoutered while reading stream
+*         -4 if unexpected rasterfile format: bad magic number
+*         -5 if unexpected rasterfile format: no colormap found
+*         -6 if unexpected rasterfile format: bad data format
+*         -7 if unexpected parameter: bad dimension of data or colormap
+*         -8 if memory allocation failure
+*/
+  switch (status)
+    {
+    case -1: 
+      printf("f_read_raster_gif/unable to open rasterfile\n");
+      break;
+    case -2: 
+      printf("f_read_raster_gif/unable to close rasterfile\n");
+      break;
+    case -3: 
+      printf("f_read_raster_gif/error encoutered while reading stream\n");
+      break;
+    case -4: 
+      printf("f_read_raster_gif/unexpected rasterfile format: bad magic number\n");
+      break;
+    case -5: 
+      printf("f_read_raster_gif/unexpected rasterfile format: no colormap found\n");
+      break;
+    case -6: 
+      printf("f_read_raster_gif/unexpected rasterfile format: bad data format\n");
+      break;
+    case -7: 
+      printf("f_read_raster_gif/unexpected parameter: bad dimension of data or colormap\n");
+      break;
+    case -8: 
+      printf("f_read_raster_gif/memory allocation failure\n");
+      break;
+   default:
+    printf("f_read_raster_gif/error reading image file\n");
+    break;
+   }
+  }
+
+free(real_array);
+
+JLP_END();
+}

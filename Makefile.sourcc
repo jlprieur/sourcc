@@ -1,0 +1,88 @@
+##################################################################
+# Makefile for c programs 
+#
+# JLP
+# Version 05-01-93
+##################################################################
+include $(JLPSRC)/jlp_make.mk
+FOURN=fft_jlp.o poidev.o
+#	$(JLIB) $(FITSLIB) $(MATHLIB) $(F77LIB) $(XLIB) -lm
+#	$(JLIB) $(FITSLIB) $(F77LIB) $(XLIB) -lm
+MMATHLIB = $(MATHLIB) nrutil.o jacobi.o
+
+F77LIB =
+CC = c++
+
+.SUFFIXES:
+.SUFFIXES: .o .c .exe $(SUFFIXES) 
+
+.c.o:
+	$(CC) -c $(CFLAGS) $*.c
+
+.o.exe:
+	$(CC) -o $(EXEC)/$*.exe $*.o \
+	$(JLIB) $(FITSLIB) $(MATHLIB) $(F77LIB) $(XLIB) -lm
+
+.c.exe:
+	$(CC) -c $(CFLAGS) $*.c
+	$(CC) -o $(EXEC)/$*.exe $*.o \
+	$(JLIB) $(FITSLIB) $(MATHLIB) $(F77LIB) $(XLIB) -lm
+
+all:
+
+absp1.exe:	absp1.c cel_meca1.c
+	$(CC) -c $(CFLAGS) absp1.c
+	$(CC) -o $(EXEC)/absp1.exe absp1.o \
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+cel_meca1.o : cel_meca1.c
+
+binary.exe:	binary.c cel_meca1.o
+	$(CC) -c $(CFLAGS) binary.c
+	$(CC) -o $(EXEC)/binary.exe binary.o cel_meca1.o \
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+nrutil.o: nrutil.c
+
+jacobi.o: jacobi.c
+
+read_gif.exe: read_gif.c xvgif.c
+	$(CC) -c $(CFLAGS) read_gif.c
+	$(CC) -c $(CFLAGS) xvgif.c
+	$(CC) -o $(EXEC)/read_gif.exe read_gif.o xvgif.o \
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+arbdf.exe: rbdf.c 
+	$(CC) -c $(CFLAGS) rbdf.c
+	$(CC) -o $(EXEC)/rbdf.exe rbdf.o \
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+clean_sc1.o: clean_sc1.c 
+
+clean_sc2.exe: clean_sc2.c clean_sc1.c clean_sc1.o 
+	$(CC) -c $(CFLAGS) clean_sc2.c
+	$(CC) -o $(EXEC)/clean_sc2.exe clean_sc2.o clean_sc1.o\
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+clean_sc_wind.exe: clean_sc_wind.c clean_sc1.c clean_sc1.o 
+	$(CC) -c $(CFLAGS) clean_sc_wind.c
+	$(CC) -o $(EXEC)/clean_sc_wind.exe clean_sc_wind.o clean_sc1.o\
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+rcp40tbl.exe: rcp40tbl.c lk_fmt2.c
+	$(CC) -c $(CFLAGS) rcp40tbl.c
+	$(CC) -c $(CFLAGS) lk_fmt2.c
+	$(CC) -g -o $(EXEC)/rcp40tbl.exe rcp40tbl.o lk_fmt2.o\
+	$(JLIB) $(FITSLIB) $(F77LIB) -lm
+
+test:
+	$(CC) -c $(CFLAGS) rcp40tbl.c
+	$(CC) -c $(CFLAGS) lk_fmt2.c
+
+fringes.exe: fringes.c
+	$(CC) -c $(CFLAGS) $*.c 
+	$(CC) -g -o $(EXEC)/$*.exe $*.o ../dcv/dcv_cgrad.o $(JLPLIB)/math/lbfgs.a \
+	$(JLIB) $(FITSLIB) $(MATHLIB) $(F77LIB) $(XLIB) -lm
+
+clear:
+	rm -f *.o

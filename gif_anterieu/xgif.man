@@ -1,0 +1,85 @@
+.TH xgif 1X
+.SH NAME
+xgif \- displays GIF (*) pictures on X11 displays
+.SH SYNTAX
+\fBxgif\fP [\fIdisplay\fP] [ [-g] \fIgeometry\fP] [-e \fIexpansion\fP]
+[-s \fIstrip\fP] [-ns] [\fIfilename\fP]
+.SH DESCRIPTION
+\fBxgif\fP is an X11 program that displays GIF pictures on an 8-plane
+display.
+.SH OPTIONS
+The '-e' option allows you to expand the picture by an integer amount.  For
+example, viewing a 320x200 picture with an expansion factor of '2' will
+result in a 640x400 picture, each pixel of which is a 2x2 block.
+.PP
+You may also specify an expansion of the picture by specifying the size of
+the window in the \fIgeometry\fP option.  This also allows you specify
+non-integer expansion factors, and different aspect ratios.  Example:  if
+you view a 320x200 picture, but specify a window size of 640x300, the picture
+will be expanded by a factor of two along the X-axis, but only by a factor of
+1.5 along the Y-axis.
+.PP
+If you specify both the '-e' option and a window size (via \fIgeometry\fP),
+the '-e' will be ignored.
+.PP
+The '-s' option allows you specify the number of bits to strip off of the
+colors.  The theory runs like this:  if you have 256 unique colors in your
+GIF file, you will almost certainly be unable to allocate all of them on an
+8-plane display, as a couple colors will already be allocated for the
+window manager, and such.  Setting this option allows you to strip off the
+low \fIstrip\fP bits of the R,G,B entries in the GIF colormap.  This will
+have the desired effect of making some of the (previously different) colors
+the SAME, and you will be able to allocate all the colors you need now.
+.PP
+You shouldn't ever HAVE to set this option, because if the program is unable
+to allocate the required colors, it will try again after incrementing
+\fIstrip\fP.  You can, however save some time, or alternately get neat
+visual effects by setting this option.
+.PP
+The '-ns' option turns off the 'auto-strip' feature described above.  You
+use this to FORCE the program to use as many colors as possible.  The theory
+works like this:  if you have 256 unique colors in your GIF file, you will
+probably be able to allocate all but a few of them.  Rather than stripping off
+bits, decreasing the color resolution for the whole picture uniformly, the
+'nostrip' option makes the program set the few unallocatable colors equal to
+the 'closest' colors that were allocated.  This may cause nasty 'blotches'
+on the picture.  Then again, it might not.  Only way to tell is to try both
+with and without the 'auto-strip' 'feature'.
+.PP
+One DEFINITE drawback of the '-ns' option is that it's only really useful
+on the FIRST picture you try to display.  If you try to display two pictures
+simultaneously, the first picture will (presumably) use up most (if not ALL)
+of the colortable, leaving NO colors for the second picture.  Therefore, the
+second (and succeeding pictures) will probably not look very good.  When you
+use the 'auto-strip' feature, you will be able to get considerably more
+pictures on the screen simultaneously.  Probably.  Varies wildly, based on
+the actual pictures being displayed.
+.PP
+Also, it should be noted that if the optional \fIfilename\fP is not supplied,
+the program will read the picture from stdin.
+.SH LIMITATIONS
+You'll require (at least) an 8-plane X11 display.  This program
+ignores 'local colormaps' in GIF files (see the GIF spec for details).
+It also only displays the first image in GIF files that have multiple
+images in them.
+.PP
+The number of pictures you can display simultaneously varies wildly.  It
+depends on how many colors are in the GIF files, and how many of them are
+shared by other GIF files.  Suffice it to say that you can ALWAYS display a
+picture, though the colors may or may not be right.  If the program was
+unable to get all the desired colors, it will mention that fact.
+.PP
+Note:  This program points out a bug in the X11R2 server for the IBM RT
+Megapel display.  This bug will occasionally cause the colors in a picture
+to be wrong, but no 'unable to allocate' message will be printed by the
+program.  (Essentially, the problem is a discrepancy between what the
+server THINKS the colormap is, and what the colormap in the hardware
+ACTUALLY is.)
+.PP
+.SH AUTHOR
+John Bradley  -  bradley@cis.upenn.edu
+.PP
+Based (heavily) on gif2ras.c, by Patrick J. Naughton (naughton@wind.sun.com),
+a program that converts GIF pictures to Sun Rasterfiles.
+.PP
+(*) GIF is a no doubt a trademark of CompuServe, so watch it!

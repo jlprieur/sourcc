@@ -1,0 +1,6 @@
+echo COMPILING $1.c ...
+cc -I$DIRINCLUDE -o $1 $1.c $DIRLIBRARY/LIB_OMP.a -lm
+echo ... DONE
+echo REMOVING $1.o ...
+rm $1.o
+echo ... DONE

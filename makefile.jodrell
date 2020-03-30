@@ -1,0 +1,70 @@
+##################################################################
+# Makefile for c programs 
+#
+# JLP
+# Version 05-01-93
+##################################################################
+smgolib=$(JLPLIB)/smgo
+mylib=$(JLPLIB)/jlp
+midir=$(JLPLIB)/midas
+JLIB=$(mylib)/jlpacc.a $(mylib)/jlputil.a $(mylib)/newplot0.a \
+    $(mylib)/jlp_splot.a $(mylib)/jlpacc.a
+#XLIB= -lXaw -lXmu -lXt -lX11
+XLIB=
+#F77LIB=$(F77DIR)/libF77.a $(F77DIR)/libI77.a $(F77DIR)/libU77.a 
+# IBM:
+F77LIB= -lc $(F77DIR)/libxlf.a
+# Manchester Jodrell Bank SUN/Sparc5:
+F77DIR=/opt/SUNWspro/lib
+F77LIB= $(F77DIR)/libF77.so $(F77DIR)/libC.so $(F77DIR)/libsunmath.so.1 \
+$(F77DIR)/libM77.so -lsocket -lnsl
+# Pic du Midi: F77LIB= -lfor -lutil -lots -li
+MIDLIB=$(midir)/stlib.a $(midir)/udiolib.a $(midir)/oslib.a
+ESOEXT=/midas/frozen/exec/esoext.exe
+#FOURN=fourn.o
+FOURN=fft_jlp.o poidev.o
+INC=-I. -I../midincl
+CCLAGS=-g -C -D$(JLPSYSTEM) 
+# Jodrell Bank
+CCLAGS= -C -D$(JLPSYSTEM) 
+
+.SUFFIXES:
+.SUFFIXES: .o .c .exe $(SUFFIXES) 
+
+.c.o:
+	cc -c $(CCLAGS) $(INC) $*.c
+
+.o.exe:
+	cc -o $(EXEC)/$*.exe $*.o \
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+.c.exe:
+	cc -c $(CCLAGS) $(INC) $*.c
+	cc -o $(EXEC)/$*.exe $*.o \
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm 
+
+all:
+
+read_gif.exe: read_gif.c xvgif.c
+	cc -c $(CCLAGS) $(INC) read_gif.c
+	cc -c $(CCLAGS) $(INC) xvgif.c
+	cc -o $(EXEC)/read_gif.exe read_gif.o xvgif.o \
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+arbdf.exe: rbdf.c 
+	cc -c $(CCLAGS) $(INC) rbdf.c
+	cc -o $(EXEC)/rbdf.exe rbdf.o \
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+rcp40tbl.exe: rcp40tbl.c lk_fmt2.c
+	cc -c $(CCLAGS) $(INC) rcp40tbl.c
+	cc -c $(CCLAGS) $(INC) lk_fmt2.c
+	cc -g -o $(EXEC)/rcp40tbl.exe rcp40tbl.o lk_fmt2.o\
+	$(JLIB) $(MIDLIB) $(F77LIB) -lm
+
+test:
+	cc -c $(CCLAGS) $(INC) rcp40tbl.c
+	cc -c $(CCLAGS) $(INC) lk_fmt2.c
+
+clear:
+	rm -f *.o
