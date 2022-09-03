@@ -4,15 +4,17 @@
 *
 *
 * JLP
-* Version 06/09/2006
+* Version 06/09/2020
 *************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> // isdigit()
 #include <math.h>
 #include <string.h>
 
 #define MINI(a,b) ((a) < (b)) ? (a) : (b)
 #define MAXI(a,b) ((a) < (b)) ? (b) : (a)
+
 /*
 #define DEBUG
 */
@@ -25,7 +27,7 @@ int main(int argc, char *argv[])
 {
 char filein[128];
 float mean, sigma, mini, maxi;
-int icol_data, icol_weights, ireject;
+int icol_data, icol_weights = 0, ireject;
 FILE *fp_in;
 register int i;
 
@@ -92,8 +94,11 @@ int ival, iweight, nn, i;
 float val, weight, lowcut, highcut, bad_value;
 char buffer[120];
 
-bad_value = 0.;
-printf("DEBUG 2012: bad_value=%f\n", bad_value);
+bad_value = -12345.;
+
+#ifdef DEBUG
+printf("DEBUG 2020: bad_value=%f\n", bad_value);
+#endif
 
 *mini = 1.e+12;
 *maxi = -1.e+12;
@@ -106,14 +111,14 @@ if(ireject) {
           lowcut, highcut);
   }
 
-if(icol_data < 1 || icol_data > 8) {
-  printf("compute_stats_from_list/Only icol_data = 1 to 8 are allowed yet\n");
+if(icol_data < 1 || icol_data > 13) {
+  printf("compute_stats_from_list/Only icol_data = 1 to 13 are allowed yet\n");
   fclose(fp_in);
   return(-1);
   }
 
-if(icol_weights < 0 || icol_weights > 8) {
-  printf("compute_stats_from_list/Only icol_weights = 1 to 8 are allowed yet\n");
+if(icol_weights < 0 || icol_weights > 13) {
+  printf("compute_stats_from_list/Only icol_weights = 1 to 13 are allowed yet\n");
   fclose(fp_in);
   return(-1);
   }
@@ -132,7 +137,8 @@ while(1) {
   val = 0.;
   weight = 1.; 
 
-if(buffer[0] != '#' && buffer[0] != '%') {
+// if(buffer[0] != '#' && buffer[0] != '%') {
+if(isdigit(buffer[0])) {
 
   switch(icol_data) { 
     case 1:
@@ -158,6 +164,21 @@ if(buffer[0] != '#' && buffer[0] != '%') {
       break;
     case 8:
       ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %f", &val);
+      break;
+    case 9:
+      ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %f", &val);
+      break;
+    case 10:
+      ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &val);
+      break;
+    case 11:
+      ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &val);
+      break;
+    case 12:
+      ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &val);
+      break;
+    case 13:
+      ival = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &val);
       break;
     default:
       fprintf(stderr,"compute_stats_from_list/Fatal error, wrong column (icol_data=%d)\n", icol_data);
@@ -189,17 +210,33 @@ if(buffer[0] != '#' && buffer[0] != '%') {
     case 8:
       iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %f", &weight);
       break;
+    case 9:
+      iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %f", &weight);
+      break;
+    case 10:
+      iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &weight);
+      break;
+    case 11:
+      iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &weight);
+      break;
+    case 12:
+      iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &weight);
+      break;
+    case 13:
+      iweight = sscanf(buffer, "%*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %f", &weight);
+      break;
     default:
       weight = 1.;
       iweight = 1;
       break;
     }
 
-/* DEBUG
+#ifdef DEBUG
   printf(" Buffer=%s\n", buffer);
-  printf(" ival=%d iweight=%d nn=%d val=%f weight=%f\n", ival, iweight,
-         nn, val, weight);
-*/
+  printf(" icol_data=%d icol_weights=%d ival=%d iweight=%d nn=%d val=%f weight=%f\n",
+         icol_data, icol_weights, ival, iweight, nn, val, weight);
+#endif
+
   if(ival != 1 || iweight != 1) break; 
   if(ireject) {
     if((val > lowcut) && (val < highcut)) {
