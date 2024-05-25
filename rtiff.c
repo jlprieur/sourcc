@@ -21,7 +21,7 @@ char *argv[];
 char in_name[61], out_name[61], comments[81];
 float *real_array;
 int nx, ny, status, iformat;
-register int i;
+int i;
 
 printf(" Program rtiff to read TIFF image files from Macintosh \n");
 printf(" JLP/LK/EA Version 20-04-92 \n");
@@ -125,7 +125,7 @@ char in_name[], comments[];
 FILE *fd;
 char *char_array, header[512];
 int nbytes_to_read, nbytes;
-register int i, j;
+int i, j;
 
 #ifdef DEBUG
 printf(" \n rdtiff/reading file : %s \n",in_name);
@@ -241,7 +241,7 @@ char in_name[], comments[];
 FILE *fd;
 char *char_array, header[512];
 int nbytes_to_read, nbytes;
-register int i,j;
+int i,j;
 
 #ifdef DEBUG
 printf(" \n rdoldimage/reading file : %s \n",in_name);
@@ -335,7 +335,7 @@ char *char_array, header[512];
 int nbytes_to_read, nbytes, to_swap;
 unsigned short version, nber_of_tags, tag_type, data_type, value1;
 unsigned long first_address, value_length, value, value2, strip_offset;
-register int i, j;
+int i, j;
 
 /* Value size according to data type: 0: 0 byte, 
     1= 1 byte, 2=ASCII (1 byte), 3=short (2 bytes), 

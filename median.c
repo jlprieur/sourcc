@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 float **img, *mean_img, *median_img, *a0, *a1;
 int nfiles, status, isize;
 INT4 nx, ny;
-register int iter, i, k;
+int iter, i, k;
 char list_file[60], out_fname[60], comments[80];
 
 /* To handle "runs median" */
@@ -207,7 +207,7 @@ static int median_compute_mean(float *mean_img, float **img, int nfiles,
 {
 float ww;
 int isize;
-register int i, k;
+int i, k;
 
 isize = nx * ny;
 for(i = 0; i < isize; i++) mean_img[i] = 0.;
@@ -253,7 +253,7 @@ static int median_compute_coeff(float *model, float *imgg, INT4 nx, INT4 ny,
 float *tmp, wback, wdata;
 double sum_1, sum_f, sum_z, sum_fz, sum_ff, det;
 int tmp_dim, ixc, iyc, ii, jj, iside;
-register int i, j;
+int i, j;
 
 ixc = nx/2; iyc = ny/2;
 
@@ -332,7 +332,7 @@ static int median_compute_median(float *median_img, float **img,
 {
 float *data, value;
 int isize;
-register int i, j, k;
+int i, j, k;
 
 data = (float *)malloc(nfiles * sizeof(float));
 

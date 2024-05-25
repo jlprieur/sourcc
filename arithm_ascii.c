@@ -83,7 +83,8 @@ static int arithm_from_list(FILE *fp_in, FILE *fp_out, int icol_x, int icol_y,
 {
 int ivalx, ivaly, nn, i;
 float valx, valy;
-char buffer[120], *pc;
+double dval;
+char buffer[258], *pc;
 
 if(icol_x < 1 || icol_x > 8) {
   printf("compute_stats_from_list/Only icol_x = 1 to 8 are allowed yet\n");
@@ -100,7 +101,7 @@ i = 0;
 while(1) {
 
 /* Read new line */
-  if(fgets(buffer,120,fp_in) == NULL) break;
+  if(fgets(buffer,258,fp_in) == NULL) break;
   i++;
 
   ivalx = 0;
@@ -181,18 +182,27 @@ if(buffer[0] != '#' && buffer[0] != '%') {
     }
 
 
-/* DEBUG
-*/
-  printf(" Buffer=%s\n", buffer);
-  printf(" ivalx=%d ivaly=%d nn=%d valx=%f valy=%f\n", ivalx, ivaly, 
-         nn, valx, valy);
-
   if(ivalx != 1 && ivaly != 1) break; 
 /*
   fprintf(fp_out, "%f %f %f \n", valx, valy, arithm(valx, valy, operation));
 */
 //  fprintf(fp_out, "%f %f %f\n", valx, valy, valx - valy);
-  fprintf(fp_out, "%s %f\n", buffer, valx - valy);
+  dval= valx - valy;
+/* DEBUG
+*/
+  if(dval < -180.) dval += 180.;
+  if(dval < -180.) dval += 180.;
+  if(dval > 180.) dval -= 180.;
+  if(dval > 180.) dval -= 180.;
+
+  if(dval > 90.) dval -= 180.;
+  if(dval < -90.) dval += 180.;
+
+  printf(" Buffer=%s\n", buffer);
+  printf(" ivalx=%d ivaly=%d nn=%d valx=%f valy=%f dval=%f\n", ivalx, ivaly, 
+         nn, valx, valy, dval);
+
+  fprintf(fp_out, "%s %f\n", buffer, dval);
   nn++;
   } /* EOF test on buffer[0] */
 } /* EOF while(1) loop */

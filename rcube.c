@@ -19,7 +19,7 @@ char in_name[61], out_name[61], comments[81], jlp_descr[60];
 float *real_array;
 INT4 in_f, out_f;
 #ifdef DEBUG
-register int i;
+int i;
 #endif
 
 printf(" Program rcube to read FITS cubes and extract a plane\n");

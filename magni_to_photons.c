@@ -25,7 +25,7 @@ int main()
 char buffer[81], code;
 float work;
 double magni, photons, magni0, dmag0;
-register int i;
+int i;
 int ioption, icode;
 
 /* Nota: Indices of array e0: 0=U 1=B 2=V 3=R 4=I */

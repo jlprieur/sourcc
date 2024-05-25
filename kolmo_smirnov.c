@@ -27,7 +27,7 @@ double *cumul_nval1, *cumul_nval2;
 int npts1, npts2;
 int nbins, status, icol1, icol2, log_is_wanted, nvalues1, nvalues2;
 char infile1[60], infile2[60], outfile[60], comments[160];
-register int k;
+int k;
 
 min_val = 0.;
 max_val = 0.;
@@ -134,7 +134,7 @@ static int compute_cumul2(double *in_data1, double *in_data2, int npts1,
                           int nbins, int *nvalues1, int *nvalues2)
 {
 double step, ww;
-register int i, k;
+int i, k;
 
 if(nbins <= 0 || max_val < min_val || npts1 <= 0 || npts2 <= 0) {
  fprintf(stderr, "compute_cumul2/Error computing cumulative function, bad input values\n");
@@ -197,7 +197,7 @@ static int save_to_file(double *cumul_val, double *cumul_nval1,
                         char *comments)
 {
 FILE *fp;
-register int i;
+int i;
 
 if((fp = fopen(outfile, "w")) == NULL) {
   fprintf(stderr, "save_to_file/Error opening %s \n", outfile);
@@ -230,7 +230,7 @@ static int read_data_from_file(double **in_data, int *npts, int icol,
 {
 double value;
 int ival;
-register int i;
+int i;
 char buffer[100];
 FILE *fp;
 
@@ -314,7 +314,7 @@ static int kolmo_test(double *cumul_val, double *cumul_nval1,
 {
 double ww;
 int kmax = 0;
-register int k;
+int k;
 
 *Kdist = 0.;
 

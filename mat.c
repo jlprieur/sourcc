@@ -8,7 +8,7 @@ main()
 {
 float ll[NMAX][NMAX], uu[NMAX][NMAX], aa[NMAX][NMAX], dd;
 int nn, indx[NMAX];
-register int i, j, k;
+int i, j, k;
 nn = 3;
 for(i = 1; i <= nn; i++) 
 for(j = 1; j <= nn; j++) 
@@ -129,7 +129,7 @@ int ludecomp(aa,nn,indx,dd)
 float aa[NMAX][NMAX], *dd;
 int nn, *indx;
 {
-register int i, j, k;
+int i, j, k;
 int jmax;
 float big, dum, sum, temp;
 float *vv;

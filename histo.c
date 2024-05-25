@@ -4,7 +4,33 @@
 * JLP
 * Version 12/03/2007
 **************************************************************************/
-#include "jlp_ftoc.h"
+#include <stdio.h>
+#include <malloc.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <ctype.h>                   /* isprint... */
+
+/* See also M_PI in math.h ... */
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif
+
+#ifndef MAXI
+#define MAXI(x,y) ((x) > (y) ? (x) : (y))
+#endif
+#ifndef MINI
+#define MINI(x,y) ((x) > (y) ? (y) : (x))
+#endif
+#ifndef ABS
+#define ABS(x) ((x) > 0. ? (x) : (-(x)))
+#endif
+#ifndef SQUARE
+#define SQUARE(x) ((x) * (x))
+#endif
+#ifndef NINT
+#define NINT(x) (int)((x) + 0.5)
+#endif
 
 /* Contained here: */
 static int read_data_from_file(double **in_data, int *npts, int icol,
@@ -20,7 +46,7 @@ int main(int argc, char *argv[])
 double *in_data, *histo_val, min_val, max_val;
 int *histo_nval, npts, nbins, status, icol, log_is_wanted, nvalues;
 char infile[60], outfile[60], comments[100];
-register int i, k;
+int i, k;
 
 npts = 10;
 nbins = 0;
@@ -117,7 +143,7 @@ static int compute_histo(double *in_data, int npts, double *histo_val,
                          double max_val, int nbins, int *nvalues)
 {
 double step, ww;
-register int i, k;
+int i, k;
 
 if(nbins <= 0 || max_val < min_val || npts <= 0) {
  fprintf(stderr, "compute_histo/Error computing histogram, bad input values\n");
@@ -164,7 +190,7 @@ static int save_to_file(double *histo_val, int *histo_nval, int nbins,
                         char *outfile, char *comments)
 {
 FILE *fp;
-register int i;
+int i;
 
 if((fp = fopen(outfile, "w")) == NULL) {
   fprintf(stderr, "save_to_file/Error opening %s \n", outfile);
@@ -197,7 +223,7 @@ static int read_data_from_file(double **in_data, int *npts, int icol,
 {
 double value;
 int ival;
-register int i;
+int i;
 char buffer[100];
 FILE *fp;
 

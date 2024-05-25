@@ -21,7 +21,7 @@ double *in_data, *cumul_val, min_val, max_val, step, ww;
 int *cumul_nval, npts, nbins, status, icol, log_is_wanted, nvalues;
 int auto_scale = 0;
 char infile[60], outfile[60], comments[100];
-register int i, k;
+int i, k;
 
 npts = 10;
 min_val = 0.;
@@ -125,7 +125,7 @@ static int compute_cumul(double *in_data, int npts, double *cumul_val,
                          double max_val, int nbins, int *nvalues)
 {
 double step, ww;
-register int i, k;
+int i, k;
 
 if(nbins <= 0 || max_val < min_val || npts <= 0) {
  fprintf(stderr, "compute_cumul/Error computing cumulative function, bad input values\n");
@@ -168,7 +168,7 @@ static int save_to_file(double *cumul_val, int *cumul_nval, int nbins,
                         char *outfile, char *comments)
 {
 FILE *fp;
-register int i;
+int i;
 
 if((fp = fopen(outfile, "w")) == NULL) {
   fprintf(stderr, "save_to_file/Error opening %s \n", outfile);
@@ -201,7 +201,7 @@ static int read_data_from_file(double **in_data, int *npts, int icol,
 {
 double value;
 int ival;
-register int i;
+int i;
 char buffer[100];
 FILE *fp;
 

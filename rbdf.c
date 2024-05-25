@@ -45,7 +45,7 @@ char date[40], descr_name[61], descr_value[81], *pc;
 float *real_array;
 int status, nx, ny, iformat, descr_length;
 long in_f, out_f;
-register int i;
+int i;
 
 printf(" Program rbdf to read BDF Starlink image files and convert to FITS format\n");
 printf(" JLP Version 20-05-97 \n");
@@ -137,7 +137,7 @@ char header[512], keyword[32], cvalue[32], *p;
 int status, nbytes_to_read, nbytes, isize, nvalues, nblock, iblock, k; 
 int int_image;
 unsigned long ii, iarray[512];
-register int i, j;
+int i, j;
 
 #ifdef DEBUG
 printf(" \n rd_bdf/reading file : %s \n",in_name);
@@ -539,7 +539,7 @@ int bdf_rdescr(header,nvalues,keyword,cvalue)
 char *header,*keyword,*cvalue;
 int nvalues;
 {
-register int i, k;
+int i, k;
 int status, ilen;
 char *pc1, *pc2;
 

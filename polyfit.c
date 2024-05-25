@@ -107,7 +107,7 @@ int status = 0, k, len=110;
 float val;
 FILE *fp_in;
 char buffer[120];
-register int i;
+int i;
 
 k = 0;
 
@@ -155,7 +155,7 @@ int ival, status = -1;
 int ic, i0, i1, no_blank, found = 0;
 char pc[120];
 float val;
-register int i, k;
+int i, k;
 
   *value = 0;
   ival = 0;
@@ -205,7 +205,7 @@ int output_poly_and_data(char *outfile, char *comments, double *xx,
 {
 FILE *fp_out;
 double ww;
-register int i;
+int i;
 
 if((fp_out = fopen(outfile,"w")) == NULL){
   printf("output_poly_and_data/Error opening output file >%s<\n", outfile);

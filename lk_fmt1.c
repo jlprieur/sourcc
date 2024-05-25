@@ -19,11 +19,11 @@ mars 1989 L.K. */
 /* 			I (x) = Ä f(x,t) dt		*/
 
 void integ_from_buffer9 (
-register photon			*phot_ptr,		/* pointeur au photon courrant */
-register long			ph_per_integ,	/* nombre de photons a integrer */
+photon			*phot_ptr,		/* pointeur au photon courrant */
+long			ph_per_integ,	/* nombre de photons a integrer */
 register unsigned short *integ)			/* pointe a l'origine du tab but (sum) */
 {
-	register short			*im_ptr;
+	short			*im_ptr;
 
 	if (ph_per_integ < 1L) return;
 	
@@ -131,14 +131,14 @@ unsigned short	*ac_org)		/* pointer to origin of target array (storing AC) */
 		L. Koechlin, Center for Astrophycs, Cambridge Mass, 1988
 */
 {
-	register short			*ac_ptr;		/* points current pixel in ac */
+	short			*ac_ptr;		/* points current pixel in ac */
 	long					integ_count;	/* photons left to integrate */
-	register long			correl_count;	/* photons left to correlate with current photon */
-	register unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
+	long			correl_count;	/* photons left to correlate with current photon */
+	unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
 	unsigned long			xi;				/* coordonnŽe seule */
 	unsigned long			yi;
-	register photon	*phot_ptrj;				/* will point ph.to correlate with current photon */
-	register long	ac = (long)ac_org;
+	photon	*phot_ptrj;				/* will point ph.to correlate with current photon */
+	long	ac = (long)ac_org;
 
 	integ_count = ph_per_integ;
 	if (integ_count < 1L)
@@ -212,7 +212,7 @@ le meme intervalle de temps de corrŽlation.
 	short			im_val;			/* valeur du pixel courrant dans integ courte */
 	long			correl_count;	/* photons restant ˆ corrŽler avec photon courrant */
 	long			i;
-	register unsigned long	xiyi;	/* coordonnŽe groupŽe d'un photon : xi & yi */
+	unsigned long	xiyi;	/* coordonnŽe groupŽe d'un photon : xi & yi */
 	unsigned long	xi, yi;			/* coordonnŽe dŽballŽe */
 	long 			xm, ym;			/* dŽcalage */
 	long 			xdec, ydec;		/* dŽcalŽs */
@@ -299,14 +299,14 @@ photon		*phot_ptri,			/* pointeur 1er photon de l'im*/
 long		ph_per_im,			/* photons par image */
 unsigned short	*ac_org)		/* pointeur d'origine du tableau but (AC) */
 {
-	register short			*ac_ptr;		/* points current pixel in ac */
+	short			*ac_ptr;		/* points current pixel in ac */
 	long					integ_count;	/* photons left to integrate */
-	register long			correl_count;	/* photons left to correlate with current photon */
-	register unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
+	long			correl_count;	/* photons left to correlate with current photon */
+	unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
 	unsigned long			xi;				/* coordonnŽe seule */
 	unsigned long			yi;
-	register photon			*phot_ptrj;		/* will point ph.to correlate with current photon */
-	register long			ac = (long)ac_org;
+	photon			*phot_ptrj;		/* will point ph.to correlate with current photon */
+	long			ac = (long)ac_org;
 	
 	integ_count = ph_per_im;
 	if (integ_count < 1L)
@@ -353,15 +353,15 @@ long			ph_per_integ,	/* equivalent to an integration time */
 long			ph_per_decorr,	/* equivalent to a de_correlation time */
 unsigned short	*de_ac_org)		/* pointer to origin af target array (storing de_ac) */
 {
-	register short			*de_ac_ptr;		/* points current pixel in de_ac */
+	short			*de_ac_ptr;		/* points current pixel in de_ac */
 	long					integ_count;	/* photons left to integrate */
-	register long			correl_count;	/* photons left to correlate with current photon */
-	register unsigned long	xiyi;			/* current photon coordinate : xi & yi */
+	long			correl_count;	/* photons left to correlate with current photon */
+	unsigned long	xiyi;			/* current photon coordinate : xi & yi */
 	unsigned long			xi;				/* coordonnŽe seule */
 	unsigned long			yi;
-	register photon	*phot_ptrj;				/* will point ph.to correlate with current photon */
+	photon	*phot_ptrj;				/* will point ph.to correlate with current photon */
 
-	register long	de_ac = (long)de_ac_org;
+	long	de_ac = (long)de_ac_org;
 
 	integ_count = ph_per_integ;
 	if (integ_count < 1L)
@@ -407,16 +407,16 @@ photon			*phot_ptrB,		/* pointe vers le 1er ph. de la sequence B ˆ intercorr */
 long			phots_dans_B,	/* nb de photons dans la seqence B */
 unsigned short	*de_ac_org)		/* pointe vers origine tableau but (intercorrelation) */
 {
-	register short			*de_ac_ptr;		/* pixel but dans intercorr */
+	short			*de_ac_ptr;		/* pixel but dans intercorr */
 	long					ph_count_A;		/* photons restant a integ dans A */
-	register long			ph_count_B;		/* photons restant a integ dans B */
-	register unsigned long	xiyi;			/* couple de coordonnee : xi & yi */
+	long			ph_count_B;		/* photons restant a integ dans B */
+	unsigned long	xiyi;			/* couple de coordonnee : xi & yi */
 	unsigned long			xi;				/* coordonnŽe seule */
 	unsigned long			yi;
 	photon					*phot_ptri;
-	register photon			*phot_ptrj;
+	photon			*phot_ptrj;
 
-	register long	de_ac = (long)de_ac_org;
+	long	de_ac = (long)de_ac_org;
 
 	phot_ptri = phot_ptrA;
 	ph_count_A = phots_dans_A;
@@ -472,17 +472,17 @@ unsigned short	*ac_org)		/* pointe l'origine du tab but (stockage AC) */
 		au maximum n + m opŽrations.
 */
 {
-	register photon			*phot_ptrj;		/* pointe vers le ph.a correler avec ph. en cours */
-	register short			*ac_ptr;		/* pixel but dans l'ac */
+	photon			*phot_ptrj;		/* pointe vers le ph.a correler avec ph. en cours */
+	short			*ac_ptr;		/* pixel but dans l'ac */
 	long					integ_count;	/* photons restant a integrer */
-	register long			correl_count;	/* photons restant a correler avec photon en cours */
+	long			correl_count;	/* photons restant a correler avec photon en cours */
 	
-	register unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
-	register long			xjyj;			/* pas "unsigned" pour que le test sur msb marche */
+	unsigned long	xiyi;			/* coordonnŽe couplŽe d'un photon : xi & yi */
+	long			xjyj;			/* pas "unsigned" pour que le test sur msb marche */
 	unsigned long			xi, yi;
 	unsigned long			bit_fenetre_i = 0X40000000; /* bit a 1 => appartenance a fen. i */
-	register unsigned long	ac = (long)ac_org;	/* origine a ajouter */
-	register unsigned long	mask = 0x3FFFFFFF;	/* pour couper les bits de poids forts (aoh!) */
+	unsigned long	ac = (long)ac_org;	/* origine a ajouter */
+	unsigned long	mask = 0x3FFFFFFF;	/* pour couper les bits de poids forts (aoh!) */
 	
 	integ_count = ph_per_integ;
 	if (integ_count < 1L)

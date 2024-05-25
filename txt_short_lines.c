@@ -80,7 +80,7 @@ static int truncate_lines(FILE *fp_in, FILE *fp_out, int imax)
 {
 char buffer[NMAX], cc, last_word[NMAX], line[NMAX];
 int i0, line_is_full, end_was_found, buffer_len, line_len; 
-register int i, k;
+int i, k;
 
 last_word[0] = '\0'; 
 while(!feof(fp_in))

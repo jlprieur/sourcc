@@ -79,7 +79,7 @@ float wx, wy;
 double wwx, wwy;
 char measured_list[61], theoretical_list[61], coeff_list[61], buffer[81];
 char corr_list[61];
-register int i, j, k;
+int i, j, k;
 FILE *fp_me, *fp_th, *fp1, *fp2, *fp3;
 
 /* Interactive input of parameters: */
@@ -401,7 +401,7 @@ double xx[NPOINTS], yy[NPOINTS], xx1[NPOINTS], yy1[NPOINTS];
 double aa[NCOEFFI*NPOINTS], psi[NPOINTS], phi[NCOEFFI];
 double stepx, stepy;
 int kmax, npts, ncoeff, nx, ny, status, ifail;
-register i, j, k;
+int i, j, k;
 
 /**aaa**/
 /* Fill xx1 and yy1 arrays with measured coordinates of spot centroids
@@ -481,7 +481,7 @@ int compute_psi(psi,zz,npts)
 double *psi, *zz; 
 int npts;
 {
-register int j;
+int j;
 
 
 for(j = 0; j < npts; j++) psi[j] = zz[j];
@@ -498,7 +498,7 @@ double *aa, *xx, *yy;
 int ncoeff, npts;
 {
 double v[10];
-register int i, j;
+int i, j;
 
 /* Loop on the lines */
    for(j = 0; j < npts; j++)
@@ -541,7 +541,7 @@ double xx, yy, *phi;
 int *ncoeff, kmax;
 float *value;
 {
-register int i, j, k, m;
+int i, j, k, m;
 double sum, x[KMAXI+1], y[KMAXI+1];
 double work;
 

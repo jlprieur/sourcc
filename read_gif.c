@@ -43,7 +43,7 @@ float *real_array;
 int   height, width, depth, datatype, cmaptype, cmaplength;
 int red, green, blue;
 int nx, ny, status, iformat;
-register int i;
+int i;
 PICINFO *pinfo;
 
 printf(" Program read_gif to read GIF image files\n");

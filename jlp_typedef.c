@@ -65,7 +65,7 @@ printf(" float = %s \n",s);
 ******************************************************/
 void disp_int1(UINT1 int1, char *s)
 {
-register int i;
+int i;
 int j;
 
 for(i = 0; i < 8; i++)
@@ -83,7 +83,7 @@ s[9] = '\0';
 ******************************************************/
 void disp_int2(UINT2 int2, char *s)
 {
-register int i;
+int i;
 int j;
 JLP_INT4 k; 
 

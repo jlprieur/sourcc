@@ -95,7 +95,7 @@ int test(ima,dim)
 float	*ima;
 int	dim;
 {
-	register int i;
+	int i;
 	int	rtn=0;
 	float	pmax=-MAXREAL,pmin=MAXREAL;
 	
@@ -386,7 +386,7 @@ raz(tab,dim)
 int dim;
 float *tab;
 {
- register int i;
+ int i;
  
  for (i=0;i<dim;i++) *(tab+i)=0;
 }
@@ -400,7 +400,7 @@ raz_d(tab,dim)
 int dim;
 double *tab;
 {
- register int i;
+ int i;
  
  for (i=0;i<dim;i++) *(tab+i)=0;
 }
@@ -417,7 +417,7 @@ char nomfic[];
 int dimx,dimy;
 
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
  float a;
  
@@ -440,7 +440,7 @@ char nomfic[];
 int dimx,dimy,dimz;
 
 {
- register long i;
+ long i;
  FILE *fic,*fopen();
  float a;
  
@@ -463,7 +463,7 @@ char nomfic[];
 int dimx,dimy;
 
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
  float a;
   
@@ -577,7 +577,7 @@ char nomfic[];
 int dimx,dimy,dimz;
 
 {
- register long i;
+ long i;
  FILE *fic,*fopen();
  float a;
   
@@ -600,7 +600,7 @@ minmax(tab,dimx,dimy,xmin,xmax,xmoy)
 int dimx,dimy;
 float *tab,*xmin,*xmax,*xmoy;
 {
- register int i;
+ int i;
  
  *xmoy=0;
  *xmin=1e30;
@@ -643,7 +643,7 @@ char nomfic[];
 int dimx,dimy;
 
 {
- register int i;
+ int i;
  char c;
  FILE *fics,*fopen();
  
@@ -710,7 +710,7 @@ float *tab;
 char nomfic[];
 int dimx,dimy;
 {
- register int i;
+ int i;
  FILE *fics,*fopen();
  
   if ((fics=fopen(nomfic,"w"))!=NULL)
@@ -735,7 +735,7 @@ char nomfic[];
 int dimx,dimy,dimz;
 
 {
- register long i;
+ long i;
  FILE *fics,*fopen();
  
   if ((fics=fopen(nomfic,"w"))!=NULL)
@@ -809,7 +809,7 @@ char nomfic[];
 int dim;
 
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
  
  if ((fic=fopen(nomfic,"r"))!=NULL)
@@ -870,7 +870,7 @@ int dim; /* dimension de x et y */
 int dimcv; /* dimension convoluante */
 
 {
- register int i,j;
+ int i,j;
  
  for (i=0; i<dimcv/2; i++) y[i]=x[i];
  for (i=dim-dimcv/2; i<dim; i++) y[i]=x[i];
@@ -1177,7 +1177,7 @@ char    nomfic[];
 int     dimx,dimy;
 
 {
-        register int i;
+        int i;
         char c;
         FILE *fics,*fopen();
 

@@ -228,7 +228,7 @@ int draw_rays(nmatrix,metafile,xstart,aper)
 int nmatrix, metafile;
 float *xstart, *aper;
 {
-register int i;
+int i;
 float xx[MAX_OPTICS], alpha[MAX_OPTICS];
 int nm, status;
 FILE *fp;
@@ -337,7 +337,7 @@ int npts;
 float    xplot[NMAX*MAX_CURVE], yplot[NMAX*MAX_CURVE]; 
 float    errx[NMAX*MAX_CURVE], erry[NMAX*MAX_CURVE];
 char     nchar[MAX_CURVE*4];
-register int i, k;
+int i, k;
 int      status, npoints[MAX_CURVE], nmax = NMAX, ncurves, error_bars;
 
 /*********************************************************************/
@@ -384,7 +384,7 @@ int npts, metafile;
 float    offx1, offy1, axlen1, aylen1, xmin, xmax, ymin, ymax;
 float    x1, x2, y1, y2, xrange, errx[2], erry[2], xplot[2], yplot[2];
 char     xlabel[20], ylabel[20], title[40], nchar[MAX_CURVE*4], plotdev[32];
-register int i, k;
+int i, k;
 int      status, npoints[1], ncurves, error_bars, plan;
 INT4     TeX_flag, hardcopy_device;
 int      isize, isymbol;

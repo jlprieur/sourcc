@@ -436,7 +436,7 @@ int from_mean_to_eccent_anomaly(double mean_ano, double *eccent_ano,
                                 double eccent)
 {
 double u, u1, test;
-register int i;
+int i;
 
 /* First guess: */
 u = mean_ano;

@@ -153,7 +153,7 @@ char ctest = '\0';
 int filesize;
 register u_char ch, ch1;
 register u_char *ptr, *ptr1;
-register int i;
+int i;
 
     setbuf(stderr, NULL);
     pname = argv[0];

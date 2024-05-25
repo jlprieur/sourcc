@@ -21,7 +21,7 @@ float *pntr_ima;
 float min, max;
 long int nx, ny, istatus;
 char filename[60], comments[80], plotdev[40]; 
-register int i;
+int i;
 
 /* Input parameters:  can be 3 or 4 (always 7 with "runs") */
 if (argc != 3 && argc != 4 && argc != 7)

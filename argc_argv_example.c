@@ -22,7 +22,7 @@ void usage(pname)
 int main(int argc, char *argv[])
 {
 char inf[60], outf[60];
-register int i;
+int i;
 
 inf[0] = '\0';
 outf[0] = '\0';

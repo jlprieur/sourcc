@@ -54,7 +54,7 @@ static compute_psi(double *xx, double *yy1, double *yy2, double aa, double bb,
                    double NN, int npts)
 {
 double lambda, dd, xp, xp_aa, sin1;
-register int i;
+int i;
 
 dd = 1.;
 lambda = 1.;
@@ -98,7 +98,7 @@ static output_psi(char *filename, char *comments, double *xx, double *yy1,
                   double *yy2,  int npts)
 {
 FILE *fp;
-register int i;
+int i;
 
 /* Opening output file: */
 if((fp = fopen(filename,"w")) == NULL) {

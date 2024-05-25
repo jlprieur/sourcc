@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 {
 double aa, time, date_obs, date_jan01, epoch;
 int idd, mm;
-register int i;
+int i;
 char buffer[80];
 
 printf(" Program Julian to compute the Julian date\n");

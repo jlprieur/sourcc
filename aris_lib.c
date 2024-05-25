@@ -53,7 +53,7 @@ void charwrite(char *nomfic, int dimx, int dimy, float *tab);
 
 void raz(float *tab,int dim)
 {
- register int i;
+ int i;
  
  for (i=0;i<dim;i++) *(tab+i)=0;
 
@@ -65,7 +65,7 @@ void raz(float *tab,int dim)
 
 void raz_d(double *tab, int dim)
 {
- register int i;
+ int i;
  
  for (i=0;i<dim;i++) *(tab+i)=0;
 }
@@ -77,7 +77,7 @@ void raz_d(double *tab, int dim)
 
 void ascwrite(char *nomfic, int dimx, int dimy, float *tab)
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
  
  if ((fic=fopen(nomfic,"w"))!=NULL)
@@ -94,7 +94,7 @@ void ascwrite(char *nomfic, int dimx, int dimy, float *tab)
 
 void ascwrite3d(char *nomfic, int dimx, int dimy, int dimz, float *tab)
 {
- register long i;
+ long i;
  FILE *fic,*fopen();
  
  if ((fic=fopen(nomfic,"w"))!=NULL)
@@ -111,7 +111,7 @@ void ascwrite3d(char *nomfic, int dimx, int dimy, int dimz, float *tab)
 
 void ascopen(char *nomfic, int dimx, int dimy, float *tab)
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
   
  if ((fic=fopen(nomfic,"r"))!=NULL)
@@ -214,7 +214,7 @@ char nomfic[];
 int dimx,dimy,dimz;
 
 {
- register long i;
+ long i;
  FILE *fic,*fopen();
   
  if ((fic=fopen(nomfic,"r"))!=NULL)
@@ -234,7 +234,7 @@ int dimx,dimy,dimz;
 void minmax(float *tab, int dimx, int dimy, 
             float *xmin, float *xmax, float *xmoy)
 {
- register int i;
+ int i;
  
  *xmoy=0;
  *xmin=1e30;
@@ -273,7 +273,7 @@ char *i_to_str(int a)
 void iwrite(char *nomfic, int dimx, int dimy, float pmax, float *tab)
 
 {
- register int i;
+ int i;
  char c;
  FILE *fics,*fopen();
  
@@ -406,7 +406,7 @@ void ropen3d(char *nomfic, int dimx, int dimy, int dimz, float *tab)
 
 void lect(float *tab, char *nomfic, int dim)
 {
- register int i;
+ int i;
  FILE *fic,*fopen();
  
  if ((fic=fopen(nomfic,"r"))!=NULL)
@@ -459,7 +459,7 @@ int dimcv: dimension convoluante
 
 void convolve(float *h, float *x, float *y, int dim, int dimcv)
 {
- register int i,j;
+ int i,j;
  
  for (i=0; i<dimcv/2; i++) y[i]=x[i];
  for (i=dim-dimcv/2; i<dim; i++) y[i]=x[i];
@@ -741,7 +741,7 @@ void tf2d_mod(float *real, float *imag, int dim, int isign)
 }
 void charwrite(char *nomfic, int dimx, int dimy, float *tab)
 {
-        register int i;
+        int i;
         char c;
         FILE *fics,*fopen();
 

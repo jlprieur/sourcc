@@ -181,8 +181,8 @@ int LoadGIF(fname, pinfo)
 {
   /* returns '1' if successful */
 
-  register byte  ch, ch1, *origptr;
-  register int   i, block;
+  byte  ch, ch1, *origptr;
+  int   i, block;
   int            aspect, gotimage;
 
   /* initialize variables */
@@ -530,12 +530,12 @@ static int readImage(pinfo)
   float *real_array;
   byte *ww;
   int isize;
-  register int k;
+  int k;
   char outfile[61], outcomments[81];
 
 /* EOF JLP97 */
 
-  register byte ch, ch1, *ptr1, *picptr;
+  byte ch, ch1, *ptr1, *picptr;
   int           i, npixels, maxpixels;
 
   npixels = maxpixels = 0;

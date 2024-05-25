@@ -33,7 +33,7 @@ char *argv[];
 char in_name[61], out_name[61], comments[81];
 float *real_array;
 int nx, ny, status, iformat;
-register int i;
+int i;
 
 printf(" Program rcp40 to read CP40 files \n");
 printf(" (G. Lelievre format: streamer cartridge...) \n");
@@ -102,7 +102,7 @@ FILE *fd;
 char header[1024];
 int nbytes_to_read, nbytes, isize, nvalues, nblock; 
 unsigned long iarray[256], ix, iy;
-register int i, j;
+int i, j;
 
 #ifdef DEBUG
 printf(" \n rdcp40/reading file : %s \n",in_name);

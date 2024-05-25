@@ -148,7 +148,7 @@ static int compute_conversion(unsigned int *pc_in, unsigned int *linux_out,
 {
 unsigned char c1;
 char filename[60], c2, cc[5], buffer[80];
-register int k, kk;
+int k, kk;
 FILE *fp1, *fp2;
 
 strcpy(filename,"/d/execlnx/ibmkbd.tex");
@@ -224,7 +224,7 @@ return(0);
 static int load_conversion(unsigned int *pc_in, unsigned int *linux_out,
                            char *tex_out, int *nn)
 {
-register int i;
+int i;
 i=-1;
 pc_in[++i] = 128; linux_out[i] = 199; sprintf(&tex_out[6*i],"\\cC");  
 pc_in[++i] = 129; linux_out[i] = 252; sprintf(&tex_out[6*i],"\\\"u");  
@@ -279,7 +279,7 @@ static int accent_to_tex(unsigned int *pc_in, char *tex_out, FILE *fp_in,
 char b_in[120],b_out[180];
 char *pci, *pco;
 int uint0;
-register int i;
+int i;
 
 while(!feof(fp_in))
 {
@@ -325,7 +325,7 @@ static int tex_to_accent(unsigned int *pc_in, char *tex_out, FILE *fp_in,
 {
 char b_in[120],b_out[180];
 char *pci, *pco;
-register int i;
+int i;
 
 while(!feof(fp_in))
 {
@@ -387,7 +387,7 @@ static int pc_to_linux(unsigned int *pc_in, unsigned int *linux_out,
 char b_in[120];
 char *pc;
 int uint0;
-register int i;
+int i;
 
 while(!feof(fp_in))
 {

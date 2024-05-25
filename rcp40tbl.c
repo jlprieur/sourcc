@@ -40,7 +40,7 @@ char *argv[];
 char in_name[61], out_name[61], comments[81];
 float *real_array;
 int isize, nx, ny, status, iformat;
-register int i;
+int i;
 
 printf(" Program rcar to read CP40 files \n");
 printf(" JLP Version 04-07-95 \n");
@@ -121,7 +121,7 @@ int nbytes_to_read, nbytes, nvalues, nblock, mode_test;
 long ix, iy, not_found, iphot, lk_nphot, nb_images;
 char *buffer, keyword[9];
 unsigned long s_date, integ_time, nphot;
-register int i, j, k;
+int i, j, k;
 long itest, istart;
 char ctest[5];
 phot_buf_rec *photon_buffer;

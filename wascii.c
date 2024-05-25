@@ -24,7 +24,7 @@ char in_name[61], out_name[61], comments[81], generic_name[61], *pc;
 INT_PNTR pntr_ima;
 INT4 nx, ny;
 float *ima;
-register int i;
+int i;
 FILE *fp;
 
 printf(" Program rbdf to read BDF Starlink image files and convert to FITS format\n");

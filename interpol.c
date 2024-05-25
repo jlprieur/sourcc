@@ -26,7 +26,7 @@ int interpol_decr(double *tab_x, double *tab_y, int nn, double xx, double *yy)
 {
 int i0, found;
 double x1, x2, x3, y1, y2, y3, aa, bb, cc;
-register int i;
+int i;
 
 *yy = 0.;
 

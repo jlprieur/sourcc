@@ -32,7 +32,7 @@ float *in_image, *testi;
 INT_PNTR pntr_image;
 INT4 istatus, nx, ny;
 float sigx, sigy; 
-register int i, j;
+int i, j;
 
 printf(" Program FWHM_BY_MODSQ to compute the Full Width at Half Maximum from the power spectrum)\n");
 printf(" JLP Version 11-05-99 \n");
@@ -99,7 +99,7 @@ static int fit_kolmo_center(float *in_image, INT4 nx, INT4 ny,
 float *ff2, *gg; 
 INT4 istatus, npts, ifail, nx1, ny1, istart, jstart, iw, jw;
 float aa, bb, r0, fwhm; 
-register int i, j;
+int i, j;
 
 nx1 = 20; ny1 = 20; 
 istart = nx/2 - nx1/2;
@@ -191,7 +191,7 @@ int jlp_fit_kolmogorof(float *ff2, float *gg, INT4 *npts,
 /* log_g log of measured intensities */
 double *log_g, *ff;
 double sum_g, sum_f1, sum_f2, sum_gf, w1;
-register int i, j, k;
+int i, j, k;
 
 *ifail = 0;
 

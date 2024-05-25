@@ -25,7 +25,7 @@ float *in1, *in2, *grad, *lapla, *delta_in_r, *delta_in_i;
 float *inten_r, *inten_i, *filter;
 float delta_z, pix_period, freq_width, work;
 long int  nx, ny, pntr, isize, nxy, istatus, nx1, ny1, kod;
-register int i, j;
+int i, j;
 char image1[61], image2[61], comments[81], buffer[81];
 char direction[2], gradient[61], laplacian[61], outcomments[81];
 
@@ -186,7 +186,7 @@ double argx, argy;
 double PI = 3.14159;
 float work;
 int icent, jcent; 
-register int i, j;
+int i, j;
 float APODI();
 
 /******************************************************

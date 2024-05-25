@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 {
 char filein[60], fileout[60], buffer[80];
 int iy[20], nmax = 20, nn = 0;
-register int i;
+int i;
 FILE *fp_in, *fp_out;
 
   printf("ascii_to_latex/ JLP/ Version 15/02/2008\n");
@@ -86,7 +86,7 @@ return(0);
 *********************************************************************************/
 int read_int_array_from_string(char *buffer, int len, int *out, int nmax, int *nn)
 {
-register int i;
+int i;
 int ival, nval;
 char *pc;
 
@@ -124,7 +124,7 @@ return(0);
 static int jlp_ascii_to_latex(FILE *fp_in, FILE *fp_out, int *iy, int nn)
 {
 char b_in[NMAX], b_out[NMAX+100];
-register int i, j, k, l;
+int i, j, k, l;
 
 while(!feof(fp_in))
 {

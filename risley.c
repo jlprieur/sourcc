@@ -429,7 +429,7 @@ int output_curves(int npts, double lambda_cent, double tt, double ff,
 double lambda[IDIM], ad[IDIM], residual[IDIM];
 double  radtosec, sin1, sin2, cross_angle1, resid_disp1;
 double step, atm_refrac_low, work, work1, work2, cross_coef, cangle;
-register int i;
+int i;
 char outfile[41];
 FILE *fd;
 int italk, icode1, icode2;

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 double m_v, parallax, parallax_error, M_v, M_v_low, M_v_high; 
 int error_is_known;
-register int k;
+int k;
 
 /* To handle "runs histo" */
 for(k = 7; k > 0; k--) if(argc == k && argv[k-1][0] == '\0') argc = k-1;

@@ -10,7 +10,7 @@ char s1[81];
 char date[5],alpha[10],delta[11];
 int n, k,JJ,MM,YYYY,HH,mm,SS,found,l;
 
-register int i;
+int i;
 float date_value,alpha_hour,alpha_min,delta_deg,delta_min,date_utilisat;
 float alpha_value,delta_value,old_date,old_alpha,old_delta;
 float new_date, new_alpha, new_delta,true_alpha,true_delta;

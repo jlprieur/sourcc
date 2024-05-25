@@ -20,7 +20,7 @@ main()
 float x[4], y[4], alpha, beta, alpha0, beta0, ra_max_disp, rb_max_disp;
 float ra_x, ra_y, rb_x, rb_y, disp_x, disp_y, disp_angle, disp_mod, w[4];
 float chr_abx, chr_aby, chr_abx2, chr_aby2;
-register int i;
+int i;
 int ra_code[4], rb_code[4], ra_cod, rb_cod, status;
 char answer[2], logfile[61];
 FILE *fp;
@@ -321,7 +321,7 @@ float x[], y[], *chr_abx_out, *chr_aby_out, *chr_abx2_out, *chr_aby2_out;
 {
 float chr_abx, chr_aby, chr_abx2, chr_aby2; 
 float chr_ab_x[2], chr_ab_y[2];
-register int i;
+int i;
 
 chr_abx = 0.; chr_aby = 0.;
 chr_abx2 = 0.; chr_aby2 = 0.;

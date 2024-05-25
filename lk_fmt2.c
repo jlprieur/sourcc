@@ -497,10 +497,10 @@ void	PAPA_vers_YX9 (phot_buf_rec *obsA_ptr, int mode_test)
 */
 
 {
-	register long		lcount;			/* nb de photons a traduire */
-	register unsigned long	y, x, yx;
-	register short		*source_phot_ptr;	/* pointe une valeur sur 2 octets */
-	register photon 	*dest_phot_ptr;		/* pointe une valeur sur 4 octets */
+	long		lcount;			/* nb de photons a traduire */
+	unsigned long	y, x, yx;
+	short		*source_phot_ptr;	/* pointe une valeur sur 2 octets */
+	photon 	*dest_phot_ptr;		/* pointe une valeur sur 4 octets */
 	
 	lcount = obsA_ptr->photons;
 	if(lcount > PHOT_BUF_SIZE) lcount = PHOT_BUF_SIZE; /* securite ... */
@@ -621,9 +621,9 @@ dans la boucle de correlation.
 */
 
 {
-	register photon			*phot_ptr;	/* adr source */
-	register long			lcount;
-	register unsigned long	mask = 0x3FDFE;
+	photon			*phot_ptr;	/* adr source */
+	long			lcount;
+	unsigned long	mask = 0x3FDFE;
 	
 	lcount = obsA_ptr->photons;
 	phot_ptr = obsA_ptr->adr;
@@ -651,12 +651,12 @@ pour des coordonnŽes sur 9 bits.
 */
 
 {
-	register long 		lcount;
-	register photon		*phot_ptr;	/* source adr */
-	register photon		*dest_ptr;	/* destination */
-	register long		yx;
-	register long		y;
-	register short		centre;
+	long 		lcount;
+	photon		*phot_ptr;	/* source adr */
+	photon		*dest_ptr;	/* destination */
+	long		yx;
+	long		y;
+	short		centre;
 	photon			*debu_im_suiv;	/* adr. debut d'image suivant le ph. en cours */ 
 	long			i;
 
@@ -708,12 +708,12 @@ pour des coordonnees sur 9 bits.
 */
 
 {
-	register long 		lcount;
-	register photon		*phot_ptr;	/* source adr */
-	register photon		*dest_ptr;	/* destination */
-	register long		yx;
-	register long		x;
-	register short		centre;
+	long 		lcount;
+	photon		*phot_ptr;	/* source adr */
+	photon		*dest_ptr;	/* destination */
+	long		yx;
+	long		x;
+	short		centre;
 	photon			*debu_im_suiv;	/* adresse du debut d'image suivant le ph. en cours */ 
 	long			i;
 
@@ -765,13 +765,13 @@ consiste a faire un zoom de 2 fois sur le centre de l'image.
 Pour recuperer la resolution de l'AC dans le cas des images de speckle.
 */
 {
-	register long 	lcount;
-	register photon	*phot_ptr;	/* source addr */
-	register photon	*dest_ptr;	/* destination */
-	register long		x, y;
-	register long		centre_x;
-	register long		centre_y;
-	register long 		yx; 		/* contient les 2 coors */
+	long 	lcount;
+	photon	*phot_ptr;	/* source addr */
+	photon	*dest_ptr;	/* destination */
+	long		x, y;
+	long		centre_x;
+	long		centre_y;
+	long 		yx; 		/* contient les 2 coors */
 
 	photon			*debu_im_suiv;	/* adresse du debut d'image suivant le ph. en cours */ 
 	long			i;
@@ -824,10 +824,10 @@ void	reduc_YX9	(phot_buf_rec *obsA_ptr)
 divise par 2 les echelles en X et Y dans le  buffer
 */
 {
-	register long 	lcount;
-	register photon	*phot_ptr;	/* source addr */
-	register long		x, y;
-	register long 		yx; 	/* contient les 2 coords */
+	long 	lcount;
+	photon	*phot_ptr;	/* source addr */
+	long		x, y;
+	long 		yx; 	/* contient les 2 coords */
 
 
 	phot_ptr = obsA_ptr->adr;
@@ -855,18 +855,18 @@ elimine de la liste les photons tombant en dehors du rectangle defini
 dans la variable "fenetre".
 */
 {
-	register long 	lcount;
-	register photon	*phot_ptr;		/* source addr */
-	register photon	*dest_ptr;		/* destination */
-	register long		x, y9;
-	register long 		yx; 			/* contient les 2 coors */
+	long 	lcount;
+	photon	*phot_ptr;		/* source addr */
+	photon	*dest_ptr;		/* destination */
+	long		x, y9;
+	long 		yx; 			/* contient les 2 coors */
 	unsigned long		msbs = 0XFFFC0000;	/* bits de poids forts, au dela des coors YX9 */
 
 	photon			*debu_im_suiv;	/* adr. du debut d'im suivant le ph. en cours */ 
 	long			i;
 
-	register long	x_inf = (long)fenetre.left;
-	register long	x_sup = (long)fenetre.right;
+	long	x_inf = (long)fenetre.left;
+	long	x_sup = (long)fenetre.right;
 	long			y_inf9 = ((long)fenetre.top) <<9;
 	long			y_sup9 = ((long)fenetre.bottom) <<9;
 
@@ -925,9 +925,9 @@ Rect		cadre_j)		/* fenetre "j" dans l'image a intercorreler. */
 /* JLP guess: */
 typedef struct{int h; int v;} Point;
 
-	register long	ph_count;		/* decompte du nb de photons restant a traiter */
-	register photon	*src_ptr;		/* pointeur du ph. en cours dans le buffer source */
-	register photon	*dst_ptr;		/* pointeur du ph. en cours dans le buffer destination */
+	long	ph_count;		/* decompte du nb de photons restant a traiter */
+	photon	*src_ptr;		/* pointeur du ph. en cours dans le buffer source */
+	photon	*dst_ptr;		/* pointeur du ph. en cours dans le buffer destination */
 	short		it = cadre_i.top;	/* pour accelerer */
 	short		ib = cadre_i.bottom;
 	short		il = cadre_i.left;
@@ -938,8 +938,8 @@ typedef struct{int h; int v;} Point;
 	short		jl = cadre_j.left;
 	short		jr = cadre_j.right;
 	Point		centre_j;		/* offset entre milieu fenetre "j" et centre image */
-	register long	x, y;				/* coordonnees separees */
-	register long	mark;				/* pour marquage d'appartenance : */
+	long	x, y;				/* coordonnees separees */
+	long	mark;				/* pour marquage d'appartenance : */
 	long		msb  = 0x80000000;	/* pour marquage d'appartenance a la fenetre j */
 	long		m2sb  = 0x40000000;	/* pour marquage d'appartenance a la fenetre i */
 	

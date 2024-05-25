@@ -42,7 +42,7 @@ char descr_name[61], descr_value[81], *pc;
 float *real_array;
 long status, nx, ny, iformat, descr_length;
 long in_f, out_f;
-register int i;
+int i;
 
 printf(" Program rccd to read CCD Toulouse image files and convert to FITS format\n");
 printf(" JLP Version 20-01-99 \n");
@@ -132,7 +132,7 @@ long status, nbytes_to_read, nbytes, isize, nvalues, nblock, iblock, k;
 long int_image;
 unsigned short *ii; 
 char iarray[1088*2];
-register int i, j;
+int i, j;
 union {
 unsigned short is;
 char c[2];
@@ -282,7 +282,7 @@ long status, nbytes_to_read, nbytes, isize, nvalues, nblock, iblock, k;
 long int_image;
 unsigned long *ii; 
 char iarray[512*4];
-register int i, j;
+int i, j;
 union {
 unsigned short is;
 char c[2];

@@ -316,7 +316,7 @@ int extract_cut(float *pws_2d, float *pws_1d,
           int fc, float angle, INT4 nx, INT4 ny, INT4 nx_1d, int nlines)
 {
 float	*pws_rot;
-register int i, j;
+int i, j;
 FILE	*fopen();
 #ifdef DEBUG
 char filename[60], comments[80];
@@ -379,7 +379,7 @@ float errx[1],erry[1],xout[20],yout[20];
 float offx1, offy1, axlen1, aylen1, xmin, xmax, ymin, ymax;
 INT4 ncurves, nout, error_bars, npts[2], plan, full_caption;
 char xlabel[41], ylabel[41], title[81], nchar[8], pcolor[60];
-register int i;
+int i;
 
 /* Allocation of memory: */
 xplot = (float*) malloc(nx_1d * sizeof(float));
@@ -447,7 +447,7 @@ float offx1, offy1, axlen1, aylen1, xmin, xmax, ymin, ymax;
 int margin, ix;
 INT4 ncurves, nout, error_bars, npts[2], plan, full_caption;
 char xlabel[41], ylabel[41], title[81], nchar[8], pcolor[60];
-register int i, k;
+int i, k;
 
 /* Allocation of memory: */
 xplot = (float*) malloc(2 * nx_1d * sizeof(float));
@@ -541,7 +541,7 @@ int margin, ix;
 INT4 ncurves, nout, error_bars, npts[2], plan, full_caption;
 char xlabel[41], ylabel[41], title[81], nchar[8], pcolor[60];
 char filename[60], comments[80];
-register int i, k;
+int i, k;
 
 /* Allocation of memory: */
 xplot = (float*) malloc(2 * nx_1d * sizeof(float));
@@ -627,7 +627,7 @@ int output_fit_1d(float *pws_1d, int fc, INT4 nx_1d, float gg, float sig_x)
 {
 float fx;
 int margin, ix;
-register int i;
+int i;
 FILE *fp;
 
 if((fp = fopen("hege_fit.dat","w")) == NULL)
@@ -657,7 +657,7 @@ return(0);
 int output_fit_2d(float *pws_1d, float *gauss_1d, INT4 nx_1d)
 {
 int margin, ix;
-register int i;
+int i;
 FILE *fp;
 
 if((fp = fopen("hege_fit.dat","w")) == NULL)
@@ -694,7 +694,7 @@ int np = 3, nn, iter_max;
 double phi[np], *aa, *psi, res;
 INT4 ifail;
 int kk, ix, status, margin;
-register int iter, i;
+int iter, i;
 
 /* 3 pixels as margin, since bad pixels in the edges with rotation */
   margin = 3;
@@ -789,7 +789,7 @@ int gaussian_fit_1d_seidel(float *pws_1d, int fc, INT4 nx_1d,
 float hh_old; 
 float *pwss;
 int kk, ix, status, margin;
-register int iter, i;
+int iter, i;
 
 /* Gauss-Seidel method: 
 * i.e. separate fit on hh and then on the other parameters:
@@ -840,7 +840,7 @@ int gaussian_fit_1d_zero_offset(float *pws_1d, int fc, INT4 nx_1d,
 double phi[2], *aa, *psi;
 int ix, np, nn, kk, status, margin;
 INT4 ifail;
-register int i;
+int i;
 
 /*
 printf(" Enter initial guess for gg and sig_x := ");
@@ -909,7 +909,7 @@ int gaussian_fit_2d_seidel(float *pws_2d, float *gauss_2d, int fc, INT4 nx, INT4
 float hh_old;
 float *pwss, rad2_x, rad2_y, fc2;
 int kk, status, margin;
-register int iter, i, j;
+int iter, i, j;
 
 /* Gauss-Seidel method:
 * i.e. separate fit on hh and then on the other parameters:
@@ -970,7 +970,7 @@ double phi[3], *aa, *psi;
 float rad2_x, rad2_y, fc2;
 int np, nn, kk, status, margin;
 INT4 ifail;
-register int i, j;
+int i, j;
 
 /*
 printf(" Enter initial guess for gg, sig_x  and sig_y:= ");
@@ -1085,7 +1085,7 @@ double phi[np], *aa, *psi, res;
 float rad2_x, rad2_y, fc2;
 int nn, kk, status, margin, iter, iter_max;
 INT4 ifail;
-register int i, j;
+int i, j;
 
 /* 3 pixels as margin, since bad pixels in the edges with rotation */
   margin = 3;
@@ -1223,7 +1223,7 @@ double phi[10], *aa, *psi;
 float rad_x, rad_y;
 int np, nn, kk, status, margin;
 INT4 ifail;
-register int i, j;
+int i, j;
 
 /*
 printf(" Enter initial guess for gg, sig_x  and sig_y:= ");

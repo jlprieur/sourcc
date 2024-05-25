@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 double M_1, sine_incl, mu, f_m;
 FILE *fp;
 char outname[60];
-register int i;
+int i;
 
 strcpy(outname,"f_mass.dat");
 

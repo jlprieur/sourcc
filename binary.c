@@ -36,7 +36,7 @@ double aa, time, date_obs, period;
 double incl, semajaxis, eccent, big_omega, omega, T_0, mean_motion;
 double position_angle, separation;
 int numb[MAXELEMTS], istart, iend, status, n_orbits;
-register int i;
+int i;
 char buffer[81], filename[61], name[MAXELEMTS][20];
 FILE *fp, *fp1;
 

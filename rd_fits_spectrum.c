@@ -109,7 +109,7 @@ return 0;
 static int jlp_write_ascii(char *outfile, float *wavelength, 
                               float *flux, long npts, char *comments)
 {
-register int i;
+int i;
 FILE *fp;
 
 /* Save output to ASCII file: */
@@ -140,7 +140,7 @@ static int jlp_check_ascii(char *in_asciifile, float *wavelength,
 float wave, flx;
 double sumw, sumf, sumsqw, sumsqf, www, wwf, mean, sigma;
 long npts1;
-register int i;
+int i;
 FILE *fp;
 char buffer[80];
 

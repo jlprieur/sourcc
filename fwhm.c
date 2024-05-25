@@ -25,7 +25,7 @@ float *in_image, *xx, *yy, *f1;
 INT_PNTR pntr_image;
 INT4 istatus, nx, ny, npts, ifail;
 float sigx, sigy, xc, yc, rho, errors[5], sky_level; 
-register int i, j;
+int i, j;
 
 printf(" Program FWHM to compute the Full Width at Half Maximum of a long integration\n");
 printf(" JLP Version 08-03-99 \n");

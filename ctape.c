@@ -32,7 +32,7 @@ FILE *out_fp;
 int fd;
 char dev_name[80], out_name[80], buffer[BLOCK_SIZE];
 int t, stat, nbytes, size, itry;
-register int k;
+int k;
 
 strcpy(dev_name,"/dev/nrmt1h");
 

@@ -30,7 +30,7 @@ char in_name[61], out_name[61], comments[81];
 float *in_image, *out_image, x_sig; 
 INT_PNTR pntr_image;
 INT4 istatus, nx, ny, npts, ifail;
-register int i, j;
+int i, j;
 
 #ifdef BARYCENTER 
 printf(" Program shift_y to shift the columns according to the barycenter\n");
@@ -100,7 +100,7 @@ static int shift_y_edge(float *in_image, float *out_image,
 double sum0, sum1;
 float work, mean, sig, ww;
 int jb, jshift, jout;
-register int i, j;
+int i, j;
 
 for(i = 0; i < nx; i++)
   {
@@ -152,7 +152,7 @@ static int shift_y_barycenter(float *in_image, float *out_image,
 double sum0, sum1;
 float work, mean, sig, ww;
 int jb, jshift, jout, nval;
-register int i, j;
+int i, j;
 
 for(i = 0; i < nx; i++)
   {

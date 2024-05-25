@@ -139,7 +139,7 @@ INT4    nx, ny;
 INT_PNTR pntr_ima;
 char	nomfics[61], nomficd[61], filename[61], comments[81];
 char	nomfics1[90], nomficd1[90], plotdev[32], buffer[30], domain[2];
-register int i, j;
+int i, j;
 	
 JLP_INQUIFMT();
 
@@ -620,7 +620,7 @@ INT4 ncurves, nout, error_bars, npts[2], plan, full_caption;
 INT4 width_frame, height_frame, devnum;
 int status;
 char xlabel[41], ylabel[41], title[81], nchar[8], pcolor[60];
-register int i;
+int i;
 
 /* Allocation of memory: */
 xplot = (float*) malloc(dim * sizeof(float));
@@ -693,7 +693,7 @@ INT4 ncurves, nout, error_bars, npts[3], plan, full_caption;
 INT4 width_frame, height_frame, devnum;
 int status;
 char xlabel[41], ylabel[41], title[81], nchar[12], pcolor[90];
-register int i, k;
+int i, k;
 
 /* Allocation of memory: */
 xplot = (float*) malloc(3 * dim * sizeof(float));
@@ -975,7 +975,7 @@ int jlp_cosine_fit(float *visib1d, float *erreur1d, int fc, int fa, float sep,
 double xx[4], ww;
 double ftol, fret;
 int iter, positive;
-register int i, k;
+int i, k;
 
 nn = 2 * (fc + 1);
 yy = (float *)malloc(nn * sizeof(float));
@@ -1065,7 +1065,7 @@ return 0;
 static double jlp_cosine_func(double *xx)
 {
 double ww;
-register int i;
+int i;
 
 /* JLP2003/I found it necessary to use and set this variable: */
 if(nn1 == 3) xx3 = xx[3];
@@ -1092,7 +1092,7 @@ return(ww);
 static void jlp_cosine_grad(double *xx, double *dx)
 {
 double ww;
-register int i;
+int i;
 
 /* JLP2003/I found it necessary to use and set this variable: */
 if(nn1 == 3) xx3 = xx[3];
@@ -1137,7 +1137,7 @@ static int jlp_check_grad(double (*func)(double []),
                           void (*dfunc)(double[], double[]))
 {
 double x1[4], xx1[4], xx2[4];
-register int i, j;
+int i, j;
 double eps=1.e-4, tolerance=1.e-4;
 double f_xx1,f_x1,error;
 

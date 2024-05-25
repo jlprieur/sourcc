@@ -53,7 +53,7 @@ double incl, semajaxis, eccent, big_omega, omega, tau_0;
 double lambda_sun, beta_sun, planet_helio_dist, planet_to_earth_dist;
 double h_1, g_1, magni, phase_angle, true_diameter, app_diameter;
 int idd, mm, inumb, numb[MAXELEMTS], istart, iend, status, n_orbits;
-register int i;
+int i;
 char buffer[81], filename[61], name[MAXELEMTS][20];
 FILE *fp, *fp1;
 

@@ -217,7 +217,7 @@ char   *filename;
 int    height, width, cmaplength, *red, *green, *blue;
 char   **image;
 {
-register int    i, j, k = 0;
+int    i, j, k = 0;
 auto     FILE   *fp;
 auto     byte   buf[16], colormap[256][3];
 auto     char   *raster;
@@ -394,7 +394,7 @@ char   *filename;
 int    height, width, cmaplength, *red, *green, *blue;
 int    **image;
 {
-register int    i, j, k = 0;
+int    i, j, k = 0;
 auto     FILE   *fp;
 auto     byte   buf[16], colormap[256][3];
 auto     char   *raster;
@@ -569,7 +569,7 @@ char   *filename;
 int    height, width, cmaplength, *red, *green, *blue;
 float  *image;
 {
-register int    i, j, k = 0;
+int    i, j, k = 0;
 auto     FILE   *fp;
 auto     byte   buf[16], colormap[256][3];
 auto     char   *raster;

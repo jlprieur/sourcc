@@ -25,7 +25,7 @@ char in_name[61], out_name[61], comments[81];
 float *in_image, *out_image, x_sig; 
 INT_PNTR pntr_image;
 INT4 istatus, nx, ny, npts, ifail;
-register int i, j;
+int i, j;
 
 printf(" Program normalize_modsq to normalize to the central value \n");
 printf(" JLP Version 27-02-00 \n");
@@ -82,7 +82,7 @@ static int normalize_center(float *in_image, float *out_image,
                             INT4 nx, INT4 ny)
 {
 float ww;
-register int i;
+int i;
 
 ww = in_image[(nx/2) + (ny/2) * nx];
 printf(" Central value was: %f\n",ww);
